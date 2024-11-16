@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Registration</title>
+    <link rel="stylesheet" href="./css/register.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container" aria-label="Global">
+            <div class="logo-container">
+                 <span class="logo-text">The Fashion Pet</span>
+                 <img class="logo-img" src="./img/logo.png" alt="Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-item">Home</a>
+                <a href="#" class="nav-item">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <h1 class="main-title">Register Your Pet</h1>
+
+        <div id="registeredPetAmounts" class="output-section"></div>
+        <div id="registeredPetNames" class="output-section"></div>
+        <div id="averagePetAge" class="output-section"></div>
+
+        <div class="button-group">
+            <button class="btn" onclick="displayPetAmount()">Show How many Registered Pets</button>
+            <button class="btn" onclick="displayRegisteredPetNames()">Show Registered Pet Names</button>
+            <button class="btn" onclick="getAverageAge()">Show Average Pet Age</button>
+        </div>
+    </main>
+
+    <script src="./scripts/register.js"></script>
+</body>
+</html>
