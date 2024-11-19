@@ -20,6 +20,7 @@ function registerPet() {
         pets.push(newPet);
         document.getElementById("petForm").reset();
         alert(`${name} has been registered!`);
+        displayRegisteredPets(); // Update the list of pets below the form
     } else {
         alert("Please fill out all fields before submitting.");
     }
@@ -30,9 +31,24 @@ function displayPetAmount() {
     document.getElementById("registeredPetAmounts").innerHTML = `<p>${message}</p>`;
 }
 
-function displayRegisteredPetNames() {
-    let petNames = pets.map(pet => pet.name).join("<br>");
-    document.getElementById("registeredPetNames").innerHTML = `<p>The Pets registered are:<br>${petNames}</p>`;
+function displayRegisteredPets() {
+    const petListContainer = document.getElementById("registeredPets");
+    petListContainer.innerHTML = ""; // Clear previous list
+
+    pets.forEach((pet, index) => {
+        const petInfo = document.createElement("div");
+        petInfo.classList.add("pet-info");
+        petInfo.innerHTML = `
+            <p><strong>Pet ${index + 1}</strong></p>
+            <p>Name: ${pet.name}</p>
+            <p>Age: ${pet.age}</p>
+            <p>Gender: ${pet.gender}</p>
+            <p>Breed: ${pet.breed}</p>
+            <p>Service: ${pet.service}</p>
+            <hr>
+        `;
+        petListContainer.appendChild(petInfo);
+    });
 }
 
 function getAverageAge() {
