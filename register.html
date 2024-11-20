@@ -46,11 +46,21 @@
             <input type="text" id="petService" name="petService" class="input-field" placeholder="Pet Service">
         </div>
         <button type="button" onclick="registerPet()" class="btn">Register Pet</button>
+        <hr class="divider"> <!-- Added a line -->
     </form>
 
     <!-- Registered Pets Section -->
-    <div id="registeredPets" class="registered-pets"></div>
-</main>
+    <div id="registeredPets" class="registered-pets">
+        <div class="pet-row pet-header">
+            <span>Name</span>
+            <span>Age</span>
+            <span>Gender</span>
+            <span>Breed</span>
+            <span>Service</span>
+            <span>Action</span>
+        </div>
+    </div>
+    </main>
 
     <script src="./scripts/register.js"></script>
 </body>

@@ -1,5 +1,5 @@
 /* General Reset */
-body, h1, h2, p, div, a, button, input {
+body, h1, h2, p, div, a, button, input, span {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -77,6 +77,13 @@ body {
     margin-bottom: 2rem;
 }
 
+/* Divider Line */
+.divider {
+    margin: 1rem 0;
+    border: 0;
+    border-top: 1px solid #d1d5db;
+}
+
 /* Form Container */
 .form-container {
     margin-bottom: 2rem;
@@ -141,28 +148,53 @@ body {
     background-color: #1d4ed8;
 }
 
-
+/* Registered Pets */
 .registered-pets {
     margin-top: 2rem;
-    padding: 1rem;
-    background: #f9fafb;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.pet-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr auto; /* Adjust columns as needed */
+    align-items: center;
+    background: #ffffff;
     border: 1px solid #d1d5db;
     border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.pet-info {
-    margin-bottom: 1rem;
-}
-
-.pet-info p {
-    margin: 0.25rem 0;
     font-size: 0.875rem;
     color: #111827;
 }
 
-.pet-info hr {
-    margin-top: 0.5rem;
-    border: 0;
-    border-top: 1px solid #d1d5db;
+.pet-header {
+    font-weight: bold;
+    background: #f3f4f6;
+    border: none;
+    box-shadow: none;
+}
+
+.pet-row span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Delete Button */
+.btn-delete {
+    padding: 0.5rem 1rem;
+    background-color: #dc2626;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn-delete:hover {
+    background-color: #b91c1c;
 }

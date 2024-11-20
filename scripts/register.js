@@ -20,48 +20,52 @@ function registerPet() {
         pets.push(newPet);
         document.getElementById("petForm").reset();
         alert(`${name} has been registered!`);
-        displayRegisteredPets(); // Update the list of pets below the form
+        displayRegisteredPetsRow(); // Update the list of pets below the form
     } else {
         alert("Please fill out all fields before submitting.");
     }
 }
 
-function displayPetAmount() {
-    const message = `We have ${pets.length} pets registered.`;
-    document.getElementById("registeredPetAmounts").innerHTML = `<p>${message}</p>`;
-}
 
-function displayRegisteredPets() {
+function displayRegisteredPetsRow() {
     const petListContainer = document.getElementById("registeredPets");
-    petListContainer.innerHTML = ""; // Clear previous list
+    petListContainer.innerHTML = `
+        <div class="pet-row pet-header">
+            <span>Name</span>
+            <span>Age</span>
+            <span>Gender</span>
+            <span>Breed</span>
+            <span>Service</span>
+            <span>Action</span>
+        </div>
+    `; // Add the header row
 
     pets.forEach((pet, index) => {
-        const petInfo = document.createElement("div");
-        petInfo.classList.add("pet-info");
-        petInfo.innerHTML = `
-            <p><strong>Pet ${index + 1}</strong></p>
-            <p>Name: ${pet.name}</p>
-            <p>Age: ${pet.age}</p>
-            <p>Gender: ${pet.gender}</p>
-            <p>Breed: ${pet.breed}</p>
-            <p>Service: ${pet.service}</p>
-            <hr>
+        const petRow = document.createElement("div");
+        petRow.classList.add("pet-row");
+        petRow.innerHTML = `
+            <span>${pet.name}</span>
+            <span>${pet.age}</span>
+            <span>${pet.gender}</span>
+            <span>${pet.breed}</span>
+            <span>${pet.service}</span>
+            <button class="btn-delete" onclick="deletePet(${index})">Delete</button>
         `;
-        petListContainer.appendChild(petInfo);
+        petListContainer.appendChild(petRow);
     });
 }
 
-function getAverageAge() {
-    if (pets.length === 0) {
-        document.getElementById("averagePetAge").innerHTML = `<p>No pets registered yet.</p>`;
-        return;
-    }
+function deletePet(index) {
+    // Removes the pet from the array
+    pets.splice(index, 1);
 
-    const totalAge = pets.reduce((sum, pet) => sum + pet.age, 0);
-    const averageAge = Math.round(totalAge / pets.length);
-    document.getElementById("averagePetAge").innerHTML = `<p>The Average pet age of registered pets is: ${averageAge}</p>`;
+    // Refresh the displayed list
+    displayRegisteredPetsRow();
+
+    // display feedback
+    alert(`Pet ${index + 1} has been deleted.`);
 }
 
 window.onload = function () {
-    console.log("Application initialized");
+    console.log("Web Page initialized");
 };
