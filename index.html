@@ -2,18 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Fashion Pet</title>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <header>
-        <div>
-            <h1></h1>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="register.html"></a>
-            </nav>
-        </div>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container" aria-label="Global">
+            <div class="logo-container">
+                <span class="logo-text">The Fashion Pet</span>
+                <img class="logo-img" src="./img/logo.png" alt="Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="register.html" class="nav-item">Register</a>
+                <a href="services.html" class="nav-item">Services</a>
+            </div>
+        </nav>
     </header>
 
+    <!-- Hero Section -->
+    <div class="hero-background">
+        <div class="hero-container">
+            <h1 class="hero-title">Welcome to The Fashion Pet</h1>
+            <p class="hero-subtitle">Providing the best care and grooming services for your furry friends</p>
+            <a href="register.html" class="hero-button">Register Your Pet</a>
+        </div>
+    </div>
+
+    <!-- Featured Services Section -->
+    <section class="featured-services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Explore our most popular services for your pets</p>
+        <div class="services-list">
+            <div class="service-card">
+                <h3 class="service-name">Grooming</h3>
+                <p class="service-description">Keep your pet looking their best with our professional grooming services.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-name">Vaccines</h3>
+                <p class="service-description">Ensure your pet stays healthy with our comprehensive vaccination packages.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-name">Nail Trimming</h3>
+                <p class="service-description">Gentle nail trimming to keep your pet comfortable and clean.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">© 2024 The Fashion Pet. All rights reserved.</p>
+    </footer>
 </body>
 </html>

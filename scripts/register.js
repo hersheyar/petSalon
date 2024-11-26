@@ -18,9 +18,10 @@ function registerPet() {
     if (name && age && gender && breed && service) {
         const newPet = new pet(name, age, gender, breed, service);
         pets.push(newPet);
+                displayRegisteredPetsRow(); // Update the list of pets below the form
+        updateServiceCounts();
         document.getElementById("petForm").reset();
         alert(`${name} has been registered!`);
-        displayRegisteredPetsRow(); // Update the list of pets below the form
     } else {
         alert("Please fill out all fields before submitting.");
     }
@@ -55,12 +56,37 @@ function displayRegisteredPetsRow() {
     });
 }
 
+function updateServiceCounts() {
+    let grooming = 0;
+    let vaccines = 0;
+    let nails = 0;
+
+    // Iterate over the pets array using a for loop
+    for (let i = 0; i < pets.length; i++) {
+        if (pets[i].service === "grooming") {
+            grooming++;
+        } else if (pets[i].service === "vaccines") {
+            vaccines++;
+        } else if (pets[i].service === "nails") {
+            nails++;
+        }
+    }
+
+    // Update the counts in the HTML
+    document.getElementById("total").textContent = pets.length;
+    document.getElementById("gTotal").textContent = grooming;
+    document.getElementById("vTotal").textContent = vaccines;
+    document.getElementById("nTotal").textContent = nails;
+}
+
+
 function deletePet(index) {
     // Removes the pet from the array
     pets.splice(index, 1);
 
     // Refresh the displayed list
     displayRegisteredPetsRow();
+    updateServiceCounts();
 
     // display feedback
     alert(`Pet ${index + 1} has been deleted.`);
@@ -69,3 +95,4 @@ function deletePet(index) {
 window.onload = function () {
     console.log("Web Page initialized");
 };
+

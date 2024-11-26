@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Services</title>
+    <link rel="stylesheet" href="./css/services.css">
+    <script src="./scripts/http_code.jquery.com_jquery-3.7.1.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container" aria-label="Global">
+            <div class="logo-container">
+                <span class="logo-text">The Fashion Pet</span>
+                <img class="logo-img" src="./img/logo.png" alt="Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="register.html" class="nav-item">Register</a>
+                <a href="services.html" class="nav-item active">Services</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="services-background">
+        <div class="services-container">
+            <h2 class="services-title">Services</h2>
+            <p class="services-subtitle">Select and manage the best services for your pets</p>
+        </div>
+    </div>
+
+    <!-- Services Display -->
+    <section class="services-list">
+        <div id="servicesCards">
+            <!-- Existing Service Cards -->
+            <div class="service-card">
+                <h3 class="service-name">Grooming</h3>
+                <p class="service-description">Professional grooming to keep your pet clean and stylish.</p>
+                <p class="service-price">$50</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-name">Vaccines</h3>
+                <p class="service-description">Full range of vaccinations to keep your pet healthy.</p>
+                <p class="service-price">$30</p>
+            </div>
+            <div class="service-card">
+                <h3 class="service-name">Nail Trimming</h3>
+                <p class="service-description">Gentle nail trimming for your pet’s comfort.</p>
+                <p class="service-price">$15</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add New Service Form -->
+    <section class="add-service">
+        <h3 class="section-title">Add a New Service</h3>
+        <form id="addServiceForm" class="form-container">
+            <div class="input-group">
+                <label for="serviceType" class="input-label">Select Service Type</label>
+                <select id="serviceType" class="input-field">
+                    <option value="" disabled selected>-- Select a service type --</option>
+                    <option value="Grooming" data-price="50">Grooming</option>
+                    <option value="Vaccines" data-price="30">Vaccines</option>
+                    <option value="Nail Trimming" data-price="15">Nail Trimming</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="servicePrice" class="input-label">Price</label>
+                <input type="number" id="servicePrice" class="input-field" placeholder="Enter price" readonly>
+            </div>
+            <button type="button" id="addServiceButton" class="btn">Add Service</button>
+        </form>
+        <div id="formNotifications" class="notifications"></div>
+    </section>
+
+    <script src="./scripts/services.js"></script>
+</body>
+</html>
