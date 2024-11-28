@@ -4,37 +4,54 @@ function Service(type, price) {
     this.price = price;
 }
 
-let services = []; // Store dynamically added services
+const lsKey = "services"; // Key for localStorage
 
-// jQuery logic
 $(document).ready(function () {
-    // Update price when service type changes
-    $("#serviceType").change(function () {
-        const selectedOption = $(this).find(":selected");
-        const price = selectedOption.data("price");
+    // Default services
+    const defaultServices = [
+        { type: "Grooming", price: 50 },
+        { type: "Vaccines", price: 30 },
+        { type: "Nails", price: 15 },
+    ];
 
-        if (price) {
-            $("#servicePrice").val(price); // Set the price from dropdown
-        }
+    // Ensure default services exist in localStorage
+    let services = JSON.parse(localStorage.getItem(lsKey)) || [];
+    if (services.length === 0) {
+        services = defaultServices;
+        localStorage.setItem(lsKey, JSON.stringify(services));
+    }
+
+    // Display existing services
+    services.forEach(service => {
+        $('#servicesCards').append(`
+            <div class="service-card">
+                <h3 class="service-name">${service.type}</h3>
+                <p class="service-description">Default service available.</p>
+                <p class="service-price">$${service.price.toFixed(2)}</p>
+            </div>
+        `);
     });
 
-    // Add service button click handler
-    $("#addServiceButton").click(function () {
-        const serviceType = $("#serviceType").val();
+    // Add new service button logic
+    $('#addServiceButton').click(function () {
+        const serviceType = $("#serviceType").val().trim();
         const servicePrice = parseFloat($("#servicePrice").val());
 
         // Validate inputs
-        if (!serviceType || isNaN(servicePrice)) {
-            $("#formNotifications").text("Please select a service and provide a valid price.").css("color", "red");
+        if (!serviceType || isNaN(servicePrice) || servicePrice <= 0) {
+            $('#formNotifications').text("Please provide a valid service type and price.").css("color", "red");
             return;
         }
 
-        // Create a new service
+        // Create a new service object
         const newService = new Service(serviceType, servicePrice);
         services.push(newService);
 
-        // Add to UI
-        $("#servicesCards").append(`
+        // Save updated services to localStorage
+        localStorage.setItem(lsKey, JSON.stringify(services));
+
+        // Add new service to the UI
+        $('#servicesCards').append(`
             <div class="service-card">
                 <h3 class="service-name">${newService.type}</h3>
                 <p class="service-description">Custom service added to the list.</p>
@@ -43,7 +60,7 @@ $(document).ready(function () {
         `);
 
         // Clear form and show success message
-        $("#addServiceForm")[0].reset();
-        $("#formNotifications").text("Service added successfully!").css("color", "green");
+        $('#addServiceForm')[0].reset();
+        $('#formNotifications').text("Service added successfully!").css("color", "green");
     });
 });

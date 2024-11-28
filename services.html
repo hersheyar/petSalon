@@ -34,21 +34,7 @@
     <!-- Services Display -->
     <section class="services-list">
         <div id="servicesCards">
-            <!-- Existing Service Cards -->
-            <div class="service-card">
-                <h3 class="service-name">Grooming</h3>
-                <p class="service-description">Professional grooming to keep your pet clean and stylish.</p>
-                <p class="service-price">$50</p>
-            </div>
-            <div class="service-card">
-                <h3 class="service-name">Vaccines</h3>
-                <p class="service-description">Full range of vaccinations to keep your pet healthy.</p>
-                <p class="service-price">$30</p>
-            </div>
-            <div class="service-card">
-                <h3 class="service-name">Nail Trimming</h3>
-                <p class="service-description">Gentle nail trimming for your pet’s comfort.</p>
-                <p class="service-price">$15</p>
+            <!-- Dynamically added service cards -->
             </div>
         </div>
     </section>
@@ -58,17 +44,12 @@
         <h3 class="section-title">Add a New Service</h3>
         <form id="addServiceForm" class="form-container">
             <div class="input-group">
-                <label for="serviceType" class="input-label">Select Service Type</label>
-                <select id="serviceType" class="input-field">
-                    <option value="" disabled selected>-- Select a service type --</option>
-                    <option value="Grooming" data-price="50">Grooming</option>
-                    <option value="Vaccines" data-price="30">Vaccines</option>
-                    <option value="Nail Trimming" data-price="15">Nail Trimming</option>
-                </select>
+                <label for="serviceType" class="input-label">Service Type</label>
+                <input type="text" id="serviceType" class="input-field" placeholder="Enter service type">
             </div>
             <div class="input-group">
                 <label for="servicePrice" class="input-label">Price</label>
-                <input type="number" id="servicePrice" class="input-field" placeholder="Enter price" readonly>
+                <input type="number" id="servicePrice" class="input-field" placeholder="Enter price">
             </div>
             <button type="button" id="addServiceButton" class="btn">Add Service</button>
         </form>
